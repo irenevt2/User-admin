@@ -1,0 +1,21 @@
+<ul class="navbar-nav">
+    <li ngbDropdown display="dynamic" class="nav-item">
+        <div class="toggle">
+            <div class="toggle-foto"><img src="{{user.foto}}" alt=""></div>
+            <a ngbDropdownToggle class="nav-link active">{{user.name}}</a>
+        </div>
+
+        <div ngbDropdownMenu>
+            <div class="user-data">
+                <div class="user-foto"><img src="{{user.foto}}" alt=""></div>
+                <div class="user-name">{{user.name}} {{user.lastname}}</div>
+                <div class="user-rol">{{user.rol}}</div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem > <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="icon-user"> Perfil</button>
+            <button ngbDropdownItem > <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2901/2901185.png" alt="icon-key"> Cambiar contraseña</button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem > <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2623/2623065.png" alt="icon-out"> Cerrar Sesion</button>
+        </div>
+    </li>
+</ul>

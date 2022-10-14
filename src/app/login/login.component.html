@@ -1,3 +1,9 @@
+<div class="modal-header" *ngIf="isModal">
+    <h4 class="modal-title">Inicio de sesion</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">x</button>
+
+</div>
+
 <div class="login">
     <form action="" [formGroup]="formlogin">
         <div class="mb-3">

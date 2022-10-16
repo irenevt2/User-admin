@@ -1,0 +1,8 @@
+.panel{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    ._menu{
+        border-right:1px solid black;
+        min-height: calc(100vh - 58px);
+    }
+}

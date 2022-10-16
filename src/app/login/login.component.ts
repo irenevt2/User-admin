@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Optional, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor( 
-    @Optional() private modalActivo:NgbActiveModal 
+    @Optional() private modalActivo:NgbActiveModal,
+    private auth:AuthService
     ) { }
 
   ngOnInit(): void {
@@ -34,11 +36,18 @@ export class LoginComponent implements OnInit {
       console.log(this.formlogin.value)
 
       if(this.username=="root" && this.password=="root"){
-        alert("Inicio de sesion");
+        // alert("Inicio de sesion");
+        this.auth.user = {
+            iduser: 1,
+            foto: 'https://lh3.googleusercontent.com/a/ALm5wu0TIazKPe2SetN_H1Ff2bQSvmnJPcii6oWgxmYxTw=s576-p-rw-no',
+            name: 'Irene',
+            lastname: 'Vargas',
+            rol: 'Administradora'
+        }
         this.evento.emit({
           event:'inicio sesion',
           user: {
-
+            
           }
         })
       }else{

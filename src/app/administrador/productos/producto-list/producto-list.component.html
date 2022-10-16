@@ -1,0 +1,26 @@
+<div class="text-center p-2" >
+    <button class="btn btn-primary" (click)="adicionar()">Adicionar</button>
+</div>
+
+<!-- <div>
+    <app-producto-form (evento)="addProducto($event)" ></app-producto-form>
+</div> -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Denominacion</th>
+            <th>Precio Compra</th>
+            <th>Precio Venta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos" (dblclick)="mostrar_detalle()">
+            <td>{{producto.idproducto}}</td>
+            <td>{{producto.denominacion}}</td>
+            <td>{{producto.precio_venta}}</td>
+            <td>{{producto.precio_compra}}</td>
+        </tr>
+    </tbody>
+</table>

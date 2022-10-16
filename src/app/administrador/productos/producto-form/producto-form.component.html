@@ -1,0 +1,28 @@
+<div class="modal-header" *ngIf="isModal">
+    <h4 class="modal-title">Formulario adicionar</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">x</button>
+</div>
+
+<div class="modal-body">
+    <div class="login">
+        <form action="" [formGroup]="form">
+            <div class="mb-3">
+                <label for="denominacion" class="form-label">Denominación</label>
+                <input type="text" class="form-control" formControlName="denominacion" id="denominacion">
+            </div>
+            <div class="mb-3">
+                <label for="precio_compra" class="form-label">Precio de compra</label>
+                <input type="text" class="form-control" formControlName="precio_compra" id="precio_compra">
+            </div>
+            <div class="mb-3">
+                <label for="precio_venta" class="form-label">Precio de venta</label>
+                <input type="text" class="form-control" formControlName="precio_venta" id="precio_venta">
+            </div>
+            <div class="mb-3 text-center">
+                <button (click)="guardar()" type="submit" class="btn btn-primary">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

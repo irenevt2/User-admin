@@ -35,26 +35,24 @@ export class LoginComponent implements OnInit {
       this.password = this.formlogin.value.password;
       console.log(this.formlogin.value)
 
-      if(this.username=="root" && this.password=="root"){
-        // alert("Inicio de sesion");
-        this.auth.user = {
-            iduser: 1,
-            foto: 'https://lh3.googleusercontent.com/a/ALm5wu0TIazKPe2SetN_H1Ff2bQSvmnJPcii6oWgxmYxTw=s576-p-rw-no',
-            name: 'Irene',
-            lastname: 'Vargas',
-            rol: 'Administradora'
-        }
-        this.evento.emit({
-          event:'inicio sesion',
-          user: {
-            
+      this.auth.signIn(this.username, this.password).subscribe({
+        next:(result:any) => {
+          console.log(result)
+          if(result.state == "failure"){
+            alert(result.message)
+          } else if(result.state == "success") {
+            this.auth.user = result.user;
+            this.evento.emit({
+                  event:'inicio sesion',
+                  user: result.user
+            })
           }
-        })
-      }else{
-        alert("Error en los datos")
-      }
+        },
+        error:(error:any) => {
+          alert(error.message)
+        }
+      })
     }else{
-      alert('revisar datos')
     }
   }
 

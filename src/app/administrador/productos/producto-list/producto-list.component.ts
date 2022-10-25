@@ -20,23 +20,72 @@ export class ProductoListComponent implements OnInit {
     this.productos.push({
       idproducto: 1,
       denominacion: "celular Xiaomi",
-      precio_venta: 500,
-      precio_compra: 420
+      precio_compra: 500,
+      precio_venta: 420
     })
     this.productos.push({
       idproducto: 1,
       denominacion: "celular Huawei",
-      precio_venta: 700,
-      precio_compra: 610
+      precio_compra: 700,
+      precio_venta: 810
     })
   }
 
   adicionar(){
+    this.openForm(1, {})
+    // let ref =  this.modal.open(ProductoFormComponent)
+    // ref.componentInstance.isModal = true;
+    // ref.componentInstance.evento.subscribe((result:any)=>{
+    //   if(result.event == "add"){
+    //     this.productos.push(result.producto)
+    //   }
+    // })
+  }
+  editar(producto:any){
+    this.openForm(2, producto)
+    // let ref =  this.modal.open(ProductoFormComponent)
+    // ref.componentInstance.isModal = true;
+    // ref.componentInstance.action = 2;
+    // ref.componentInstance.item = producto;
+
+    // ref.componentInstance.evento.subscribe((result:any)=>{
+    //   if(result.event == "edit"){
+    //     this.productos.forEach(val=>{
+    //       if(val.idproducto == result.producto.idproducto){
+    //         val.denominacion = result.producto.denominacion;
+    //         val.precio_compra = result.producto.precio_compra;
+    //         val.precio_venta = result.producto.precio_venta;
+    //         return;
+    //       }
+    //     })
+    //   }
+    // })
+  }
+
+  eliminar(producto:any, index:number){
+    this.productos.splice(index, 1)
+  }
+
+  openForm(accion = 1, producto:any){
     let ref =  this.modal.open(ProductoFormComponent)
     ref.componentInstance.isModal = true;
+
+    ref.componentInstance.accion = accion;
+    ref.componentInstance.item = producto;
+
     ref.componentInstance.evento.subscribe((result:any)=>{
-      if(result.event == "add"){
+      if( accion == 1 ){
         this.productos.push(result.producto)
+      }else
+      if( accion == 2 ){
+        this.productos.forEach(val=>{
+          if(val.idproducto == result.producto.idproducto){
+            val.denominacion = result.producto.denominacion;
+            val.precio_compra = result.producto.precio_compra;
+            val.precio_venta = result.producto.precio_venta;
+            return;
+          }
+        })
       }
     })
   }

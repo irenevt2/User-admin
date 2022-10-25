@@ -14,6 +14,7 @@ import { AdministradorProductosComponent } from './administrador/administrador-p
 import { ProductoListComponent } from './administrador/productos/producto-list/producto-list.component';
 import { ProductoFormComponent } from './administrador/productos/producto-form/producto-form.component';
 import { ProductoDetalleComponent } from './administrador/productos/producto-detalle/producto-detalle.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductoDetalleComponent } from './administrador/productos/producto-det
     AppRoutingModule,
     NgbDropdownModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

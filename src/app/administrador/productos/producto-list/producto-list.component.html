@@ -1,5 +1,7 @@
 <div class="text-center p-2" >
-    <button class="btn btn-primary" (click)="adicionar()">Adicionar</button>
+    <button class="btn btn-primary" (click)="adicionar()">
+        Adicionar
+    </button>
 </div>
 
 <!-- <div>
@@ -16,11 +18,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let producto of productos" (dblclick)="mostrar_detalle()">
+        <tr *ngFor="let producto of productos; let index=index" (dblclick)="mostrar_detalle()">
             <td>{{producto.idproducto}}</td>
             <td>{{producto.denominacion}}</td>
-            <td>{{producto.precio_venta}}</td>
             <td>{{producto.precio_compra}}</td>
+            <td>{{producto.precio_venta}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="editar(producto)">
+                    Editar
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="eliminar(producto,index)">
+                    Eliminar
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>

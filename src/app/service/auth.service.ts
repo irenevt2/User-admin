@@ -1,23 +1,32 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { User } from './user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user = {
+  user: User = {
     iduser: 0,
-    foto: '',
-    name: '',
-    lastname: '',
-    rol: ''
-
-    // iduser: 1,
-    // foto: 'https://lh3.googleusercontent.com/a/ALm5wu0TIazKPe2SetN_H1Ff2bQSvmnJPcii6oWgxmYxTw=s576-p-rw-no',
-    // name: 'Irene',
-    // lastname: 'Vargas',
-    // rol: 'Administradora'
+    apellidos_persona: "",
+    cargo: "",
+    imgUrl: "",
+    nombre_persona: "",
+    password: "",
+    username: ""
+  }
+  
+  constructor(
+    private http:HttpClient
+  ) { }
+  
+  signIn(username:any, password:any){
+    return this.http.post(environment.BACKEND+"/auth/signin",{
+      username : username,
+      password : password
+    })
   }
 
-  constructor() { }
 }
